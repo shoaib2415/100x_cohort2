@@ -1,0 +1,33 @@
+<html>
+  <head>
+    <title>Calculator</title>
+  </head>
+  <script>
+    let timeOut;
+    function debounceCalculateSum() {
+      clearTimeout(timeOut);
+      timeOut = setTimeout(function () {
+        calculateSum();
+      }, 1000);
+    }
+    function calculateSum() {
+      let num1 = document.getElementById("num1").value;
+      let num2 = document.getElementById("num2").value;
+      let result = parseInt(num1) + parseInt(num2);
+      const element = document.getElementById("finalSum");
+      element.innerHTML = "sum is:" + result;
+    }
+  </script>
+  <body>
+    <input type="text" placeholder="num1" id="num1" />
+    <br />
+    <input
+      type="text"
+      placeholder="num1"
+      id="num2"
+      oninput="debounceCalculateSum()"
+    />
+    <br />
+    <div id="finalSum"></div>
+  </body>
+</html>
